@@ -1,0 +1,224 @@
+@prefix : <http://www.semanticweb.org/skincare#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skincare: <http://www.semanticweb.org/skincare/> .
+@base <http://www.semanticweb.org/skincare> .
+
+<http://www.semanticweb.org/skincare> rdf:type owl:Ontology ;
+                                       owl:imports <http://ns.inria.fr/provoc> ,
+                                                   <http://www.semanticweb.org/schema.org> ,
+                                                   <http://www.semanticweb.org/angel/ontologies/2021/9/untitled-ontology-9> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/skincare/hasCategory
+skincare:hasCategory rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/skincare/hasIngredient
+skincare:hasIngredient rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/skincare/hasPurpose
+skincare:hasPurpose rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/skincare/isForSkinType
+skincare:isForSkinType rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/skincare/isOfBrand
+skincare:isOfBrand rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/skincare/isProductType
+skincare:isProductType rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/skincare/hasName
+skincare:hasName rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/skincare/hasPrice
+skincare:hasPrice rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/skincare/hasRating
+skincare:hasRating rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/skincare/Cleanser
+skincare:Cleanser rdf:type owl:Class ;
+                  rdfs:subClassOf skincare:ProductType .
+
+
+###  http://www.semanticweb.org/skincare/Combination
+skincare:Combination rdf:type owl:Class ;
+                     rdfs:subClassOf skincare:SkinType .
+
+
+###  http://www.semanticweb.org/skincare/Dry
+skincare:Dry rdf:type owl:Class ;
+             rdfs:subClassOf skincare:SkinType .
+
+
+###  http://www.semanticweb.org/skincare/Eye_cream
+skincare:Eye_cream rdf:type owl:Class ;
+                   rdfs:subClassOf skincare:ProductType .
+
+
+###  http://www.semanticweb.org/skincare/Face_mask
+skincare:Face_mask rdf:type owl:Class ;
+                   rdfs:subClassOf skincare:ProductType .
+
+
+###  http://www.semanticweb.org/skincare/Moisturizer
+skincare:Moisturizer rdf:type owl:Class ;
+                     rdfs:subClassOf skincare:ProductType .
+
+
+###  http://www.semanticweb.org/skincare/Moisturizing
+skincare:Moisturizing rdf:type owl:Class ;
+                      rdfs:subClassOf skincare:ProductPurpose .
+
+
+###  http://www.semanticweb.org/skincare/Normal
+skincare:Normal rdf:type owl:Class ;
+                rdfs:subClassOf skincare:SkinType .
+
+
+###  http://www.semanticweb.org/skincare/Oily
+skincare:Oily rdf:type owl:Class ;
+              rdfs:subClassOf skincare:SkinType .
+
+
+###  http://www.semanticweb.org/skincare/ProductIngredient
+skincare:ProductIngredient rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/skincare/ProductPurpose
+skincare:ProductPurpose rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/skincare/ProductType
+skincare:ProductType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/skincare/Sensitive
+skincare:Sensitive rdf:type owl:Class ;
+                   rdfs:subClassOf skincare:SkinType .
+
+
+###  http://www.semanticweb.org/skincare/SkinType
+skincare:SkinType rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/skincare/Soothing
+skincare:Soothing rdf:type owl:Class ;
+                  rdfs:subClassOf skincare:ProductPurpose .
+
+
+###  http://www.semanticweb.org/skincare/Sun_Protection
+skincare:Sun_Protection rdf:type owl:Class ;
+                        rdfs:subClassOf skincare:ProductType .
+
+
+###  http://www.semanticweb.org/skincare/Treatment
+skincare:Treatment rdf:type owl:Class ;
+                   rdfs:subClassOf skincare:ProductType .
+
+
+###  http://www.semanticweb.org/skincare/UV_Protection
+skincare:UV_Protection rdf:type owl:Class ;
+                       rdfs:subClassOf skincare:ProductPurpose .
+
+
+###  http://www.semanticweb.org/skincare/Soothing/Purifying
+<http://www.semanticweb.org/skincare/Soothing/Purifying> rdf:type owl:Class ;
+                                                         rdfs:subClassOf skincare:ProductPurpose .
+
+
+###  https://schema.org/ProductName
+<https://schema.org/ProductName> owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                       owl:onProperty skincare:hasIngredient ;
+                                                       owl:someValuesFrom skincare:ProductIngredient
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty skincare:isForSkinType ;
+                                                       owl:someValuesFrom skincare:SkinType
+                                                     ] ,
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty skincare:isOfBrand ;
+                                                       owl:someValuesFrom <https://schema.org/ProductBrand>
+                                                     ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/skincare/Bareminerals
+skincare:Bareminerals rdf:type owl:NamedIndividual ,
+                               <https://schema.org/ProductBrand> .
+
+
+###  http://www.semanticweb.org/skincare/Clinique
+skincare:Clinique rdf:type owl:NamedIndividual ,
+                           <https://schema.org/ProductBrand> .
+
+
+###  http://www.semanticweb.org/skincare/Glycerin
+skincare:Glycerin rdf:type owl:NamedIndividual ,
+                           skincare:ProductIngredient .
+
+
+###  http://www.semanticweb.org/skincare/Kiehls
+skincare:Kiehls rdf:type owl:NamedIndividual ,
+                         <https://schema.org/ProductBrand> .
+
+
+###  http://www.semanticweb.org/skincare/Origins
+skincare:Origins rdf:type owl:NamedIndividual ,
+                          <https://schema.org/ProductBrand> .
+
+
+###  http://www.semanticweb.org/skincare/Shiseido
+skincare:Shiseido rdf:type owl:NamedIndividual ,
+                           <https://schema.org/ProductBrand> .
+
+
+###  http://www.semanticweb.org/skincare/Sodium_lauroyl_glutamate
+skincare:Sodium_lauroyl_glutamate rdf:type owl:NamedIndividual ,
+                                           skincare:ProductIngredient .
+
+
+###  http://www.semanticweb.org/skincare/Stearic_Acid
+skincare:Stearic_Acid rdf:type owl:NamedIndividual ,
+                               skincare:ProductIngredient .
+
+
+###  http://www.semanticweb.org/skincare/Water
+skincare:Water rdf:type owl:NamedIndividual ,
+                        skincare:ProductIngredient .
+
+
+###  http://www.semanticweb.org/skincare/la_Mer
+skincare:la_Mer rdf:type owl:NamedIndividual ,
+                         <https://schema.org/ProductBrand> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
